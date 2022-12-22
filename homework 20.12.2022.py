@@ -18,9 +18,6 @@ def retry(attempts=5, desired_value=None):
                 if func(*args, **kwargs) == desired_value:
                     print(desired_value)
                     return desired_value
-                elif func(*args, **kwargs) != desired_value:
-                    print(func(*args, **kwargs))
-
                 i += 1
             print('бажаного значення досягти не вдалося')
 
@@ -56,24 +53,29 @@ get_random_values([1, 2, 3, 4], 3)
 get_random_values([1, 2, 3, 4], size=1)
 
 
-def square(n):
-
-    for i in range(n):
-
-        if i == 0:
-            print('*' * n)
-        elif i < n:
-            print('*' + '-' * (n - 2) + '*')
-        elif i == n:
-            print('*' * n)
-    return square()
-
-square(5)
 
 
 
 
 
+
+
+
+
+
+def print_inner_line(n, w):
+    if n/w == 1:
+        print('*' * n)
+    else:
+        print('*' + ' ' * (n - 2) + '*')
+    return n*print_inner_line(n, w+1)
+
+def print_square(n):
+    print('*' * n)
+
+
+print_inner_line(5, 5)
+print_square(5)
 
 
 
